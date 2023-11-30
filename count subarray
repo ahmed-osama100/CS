@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int t;
+    cout << "enter the t :";
+    cin >> t; // taking the number of test cases as input
+    while (t--)
+    {
+        int n;
+        cout << " enter the n: ";
+        cin >> n; // taking the number of elements in the array as input
+        int arr[n];
+        for (int i = 0; i < n; i++)
+        {
+            cin >> arr[i]; // taking the elements of the array as input
+        }
+        int ans = n; // initializing the answer variable as n
+        for (int i = 1; i < n; i++)
+        {
+            int len = 1;
+            while (i < n && arr[i] >= arr[i - 1])
+            {                   // checking if the current element is greater than or equal to the previous element
+                len++;          // incrementing the length of the current non-decreasing subarray
+                ans += len - 1; // adding the length of the current subarray to the answer, and subtracting 1 to remove the contribution of the last element
+                i++;            // moving to the next element
+            }
+        }
+        cout << ans << endl; // printing the final answer for the current test case
+    }
+    return 0;
+}
