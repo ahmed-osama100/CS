@@ -1,0 +1,36 @@
+#include <iostream>
+#include <climits>
+using namespace std;
+
+// function to calculate the smallest possible result
+int calculate_smallest_result(int n, int arr[]) {
+    // initialize the result to a very large value
+    int result = INT_MAX;
+    // loop over all values of i and j
+    for (int i = 1; i < n; i++) {
+        for (int j = i+1; j <= n; j++) {
+            // calculate the result for the current i and j
+            int current_result = arr[i-1] + arr[j-1] + (j-i);
+            // update the result if the current result is smaller
+            if (current_result < result) {
+                result = current_result;
+            }
+        }
+    }
+    return result;
+}
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        int arr[n];
+        for (int i = 0; i < n; i++) {
+            cin >> arr[i];
+        }
+        cout << calculate_smallest_result(n, arr) << endl;
+    }
+    return 0;
+}
